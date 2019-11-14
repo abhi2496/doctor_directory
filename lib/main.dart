@@ -12,6 +12,11 @@ class DoctorDirectory extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       //home: MyHomePage(title: 'Flutter Demo Home Page'),
       home: DoctorsBySpeciality(),
+      theme: ThemeData(
+/*        primaryColor: Colors.lightBlue[800],
+        accentColor: Colors.cyan[600],*/
+        backgroundColor: Colors.transparent,
+      ),
     );
   }
 }

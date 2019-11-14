@@ -40,7 +40,7 @@ class Specialities extends StatelessWidget {
             print('I was tapped');
           },
           child: Padding(
-            padding: EdgeInsets.all(30.0),
+            padding: EdgeInsets.all(20.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [

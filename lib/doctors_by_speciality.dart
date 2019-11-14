@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:doctor_directory/specialities.dart';
+import 'package:doctor_directory/doctor_list.dart';
 
-//final _backgroundColor = Colors.blue[600];
-final _backgroundColor = Colors.white;
+final _backgroundColor = Colors.blue[600];
+//final _backgroundColor = Colors.white;
 
 class DoctorsBySpeciality extends StatelessWidget {
   static const _specialityNames = <String>[
@@ -32,11 +33,42 @@ class DoctorsBySpeciality extends StatelessWidget {
       ));
     }
 
+    /*  final listView = Container(
+        color: Colors.transparent,
+        padding: EdgeInsets.symmetric(horizontal: 8.0),
+        child: ListView.builder(
+            itemCount: specialities.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Card(
+                child: ListTile(
+                  onTap: (){
+                    print('Tapped');
+                  },
+                  title: Text(_specialityNames[index]),
+                  trailing: Icon(Icons.keyboard_arrow_right),
+                ),
+              );
+            }
+        )
+    );
+*/
     final listView = Container(
-      color: _backgroundColor,
+      color: Colors.transparent,
       padding: EdgeInsets.symmetric(horizontal: 8.0),
       child: ListView.builder(
-        itemBuilder: (BuildContext context, int index) => specialities[index],
+        itemBuilder: (BuildContext context, int index) {
+          return InkWell(
+            splashColor: _baseColors[index],
+            borderRadius: BorderRadius.circular(50.0),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> DoctorList()));
+              },
+            child: ListTile(
+              title: Text(_specialityNames[index]),
+              trailing: Icon(Icons.keyboard_arrow_right),
+            ),
+          );
+        },
         itemCount: specialities.length,
       ),
     );
@@ -44,10 +76,10 @@ class DoctorsBySpeciality extends StatelessWidget {
     final appBar = AppBar(
       elevation: 0.0,
       title: Text(
-        'Doctors Directory',
+        'Doctors by Speciality',
         style: TextStyle(
           color: Colors.black,
-          fontSize: 30.0,
+          fontSize: 26.0,
         ),
       ),
       centerTitle: true,
